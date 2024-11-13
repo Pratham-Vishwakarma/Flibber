@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Flibber: AI Research Companion
+Flibber is an AI-powered research platform designed to streamline and enhance the research process. By leveraging advanced AI, Flibber provides personalized insights, real-time feedback, and collaboration tools, empowering researchers to optimize their projects, manage workflows, and make informed decisions more efficiently.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Table of Contents
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Project Architecture](#project-architecture)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## About Laravel
+## About the Project
+Flibber was developed to address common challenges in research, including time-consuming data management, collaboration barriers, and version control issues. With a focus on building a collaborative research community, Flibber facilitates efficient teamwork, open communication, and continuous improvement among researchers across disciplines.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
+- **AI-Powered Insights**: Get personalized feedback, recommendations, and strategies based on your research area.
+- **Research Paper Summarization**: Generate concise summaries for research papers to extract essential information quickly.
+- **Citation Management**: Streamline your references, making it easier to cite works accurately and efficiently.
+- **Version Control**: Track changes in research projects with full version history.
+- **Real-Time Collaboration**: Collaborate seamlessly with researchers across the globe.
+- **Vultr Cloud Infrastructure**: Scalable data processing and storage powered by Vultr to handle high-performance computing needs.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Project Architecture
+Flibber is designed with a microservice architecture to ensure scalability and flexibility. Below is a high-level overview of its system architecture:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Frontend**: Built using Laravel Livewire with Ant Design (Antd) for a user-friendly interface.
+- **Backend**: RESTful API developed in PHP and Laravel, with AI functionalities powered by serverless inference on Vultr.
+- **Database**: Hosted on Vultr Block Storage for reliable, scalable storage.
+- **Cloud Infrastructure**: Deployed on Vultr cloud instance with serverless components for on-demand AI processing.
 
-## Learning Laravel
+## Getting Started
+### Prerequisites
+Before setting up Flibber locally, ensure you have the following installed:
+- [PHP >= 8.0](https://www.php.net/downloads)
+- [Laravel >= 9.0](https://laravel.com/docs/9.x/installation)
+- [Node.js and npm](https://nodejs.org/) for frontend dependencies
+- [Composer](https://getcomposer.org/) for PHP package management
+- Vultr API Key (for accessing serverless inference)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Installation
+1. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/yourusername/flibber.git
+    cd flibber
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Install PHP and JavaScript Dependencies**:
+    ```bash
+    composer install
+    npm install && npm run build
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Environment Configuration**:
+    Copy the `.env.example` to create a `.env` file and update it with your credentials, including the Vultr API key.
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-## Laravel Sponsors
+4. **Database Setup**:
+    Set up your database and update the `.env` file with database credentials. Then run migrations:
+    ```bash
+    php artisan migrate
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Start the Application**:
+    ```bash
+    php artisan serve
+    ```
 
-### Premium Partners
+## Usage
+Once set up, navigate to `http://localhost:8000` to begin using Flibber. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Home Dashboard**: Explore the dashboard for an overview of available tools and features.
+2. **Upload Papers**: Use the `Upload` section to add research papers, which can then be summarized or annotated.
+3. **Real-Time Collaboration**: Access the collaborative workspace to share insights and feedback with others.
+4. **Citation Management**: Add and organize citations using the citation manager tool.
+5. **Manage Versions**: Keep track of your research projects and retrieve previous versions as needed.
 
 ## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+We welcome contributions to enhance Flibber! If you’d like to add features or fix issues, please:
+1. Fork the repository.
+2. Create a branch for your feature (`git checkout -b feature/new-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Create a pull request.
 
 ## License
+This project is licensed under the MIT License.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Contact
+For questions or suggestions, please contact the team at [pratham.vishwakarma125940@gmail.com](mailto:pratham.vishwakarma125940@gmail.com).
+
+---
+
+Thank you for exploring Flibber! We hope this tool significantly enhances your research experience and fosters innovation in your field.
